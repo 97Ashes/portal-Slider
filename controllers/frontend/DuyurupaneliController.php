@@ -1,14 +1,11 @@
 <?php
-
 namespace frontend\controllers;
-
 use Yii;
 use frontend\models\Duyurupaneli;
 use frontend\models\DuyurupaneliSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
 /**
  * DuyurupaneliController implements the CRUD actions for Duyurupaneli model.
  */
@@ -28,7 +25,6 @@ class DuyurupaneliController extends Controller
             ],
         ];
     }
-
     /**
      * Lists all Duyurupaneli models.
      * @return mixed
@@ -37,13 +33,11 @@ class DuyurupaneliController extends Controller
     {
         $searchModel = new DuyurupaneliSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
-
     /**
      * Displays a single Duyurupaneli model.
      * @param integer $id
@@ -56,7 +50,6 @@ class DuyurupaneliController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
-
     /**
      * Creates a new Duyurupaneli model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -65,16 +58,13 @@ class DuyurupaneliController extends Controller
     public function actionCreate()
     {
         $model = new Duyurupaneli();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
         return $this->render('create', [
             'model' => $model,
         ]);
     }
-
     /**
      * Updates an existing Duyurupaneli model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -85,16 +75,13 @@ class DuyurupaneliController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
         return $this->render('update', [
             'model' => $model,
         ]);
     }
-
     /**
      * Deletes an existing Duyurupaneli model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -105,10 +92,8 @@ class DuyurupaneliController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
-
     /**
      * Finds the Duyurupaneli model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -121,7 +106,6 @@ class DuyurupaneliController extends Controller
         if (($model = Duyurupaneli::findOne($id)) !== null) {
             return $model;
         }
-
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 }
