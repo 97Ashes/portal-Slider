@@ -3,16 +3,16 @@
 namespace kouosl\Slider\frontend\controllers;
 
 use Yii;
-use frontend\models\Duyurupaneli;
-use frontend\models\DuyurupaneliSearch;
+use frontend\models\Scheduler;
+use frontend\models\SchedulerSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DuyurupaneliController implements the CRUD actions for Duyurupaneli model.
+ * SchedulerController implements the CRUD actions for Scheduler model.
  */
-class DuyurupaneliController extends Controller
+class SchedulerController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class DuyurupaneliController extends Controller
     }
 
     /**
-     * Lists all Duyurupaneli models.
+     * Lists all Scheduler models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new DuyurupaneliSearch();
+        $searchModel = new SchedulerSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class DuyurupaneliController extends Controller
     }
 
     /**
-     * Displays a single Duyurupaneli model.
+     * Displays a single Scheduler model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class DuyurupaneliController extends Controller
     }
 
     /**
-     * Creates a new Duyurupaneli model.
+     * Creates a new Scheduler model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Duyurupaneli();
+        $model = new Scheduler();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class DuyurupaneliController extends Controller
     }
 
     /**
-     * Updates an existing Duyurupaneli model.
+     * Updates an existing Scheduler model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class DuyurupaneliController extends Controller
     }
 
     /**
-     * Deletes an existing Duyurupaneli model.
+     * Deletes an existing Scheduler model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class DuyurupaneliController extends Controller
     }
 
     /**
-     * Finds the Duyurupaneli model based on its primary key value.
+     * Finds the Scheduler model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Duyurupaneli the loaded model
+     * @return Scheduler the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Duyurupaneli::findOne($id)) !== null) {
+        if (($model = Scheduler::findOne($id)) !== null) {
             return $model;
         }
 

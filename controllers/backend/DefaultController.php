@@ -1,5 +1,5 @@
 <?php
-namespace controllers\backend;
+namespace kouosl\Slider\controllers\backend;
 
 
 /**

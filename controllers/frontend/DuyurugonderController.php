@@ -3,16 +3,16 @@
 namespace kouosl\Slider\frontend\controllers;
 
 use Yii;
-use frontend\models\Duyurupaneli;
-use frontend\models\DuyurupaneliSearch;
+use frontend\models\Duyurugonder;
+use frontend\models\DuyurugonderSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * DuyurupaneliController implements the CRUD actions for Duyurupaneli model.
+ * DuyurugonderController implements the CRUD actions for Duyurugonder model.
  */
-class DuyurupaneliController extends Controller
+class DuyurugonderController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class DuyurupaneliController extends Controller
     }
 
     /**
-     * Lists all Duyurupaneli models.
+     * Lists all Duyurugonder models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new DuyurupaneliSearch();
+        $searchModel = new DuyurugonderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,29 +45,30 @@ class DuyurupaneliController extends Controller
     }
 
     /**
-     * Displays a single Duyurupaneli model.
+     * Displays a single Duyurugonder model.
      * @param integer $id
+     * @param integer $senderid
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView($id, $senderid)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($id, $senderid),
         ]);
     }
 
     /**
-     * Creates a new Duyurupaneli model.
+     * Creates a new Duyurugonder model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Duyurupaneli();
+        $model = new Duyurugonder();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id, 'senderid' => $model->senderid]);
         }
 
         return $this->render('create', [
@@ -76,18 +77,19 @@ class DuyurupaneliController extends Controller
     }
 
     /**
-     * Updates an existing Duyurupaneli model.
+     * Updates an existing Duyurugonder model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
+     * @param integer $senderid
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id, $senderid)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id, $senderid);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id, 'senderid' => $model->senderid]);
         }
 
         return $this->render('update', [
@@ -96,29 +98,31 @@ class DuyurupaneliController extends Controller
     }
 
     /**
-     * Deletes an existing Duyurupaneli model.
+     * Deletes an existing Duyurugonder model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
+     * @param integer $senderid
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($id, $senderid)
     {
-        $this->findModel($id)->delete();
+        $this->findModel($id, $senderid)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Duyurupaneli model based on its primary key value.
+     * Finds the Duyurugonder model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Duyurupaneli the loaded model
+     * @param integer $senderid
+     * @return Duyurugonder the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($id, $senderid)
     {
-        if (($model = Duyurupaneli::findOne($id)) !== null) {
+        if (($model = Duyurugonder::findOne(['id' => $id, 'senderid' => $senderid])) !== null) {
             return $model;
         }
 
