@@ -1,6 +1,6 @@
 <?php
 
-namespace kouosl\portal-Slider\models;
+namespace kouosl\Slider\models;
 
 use Yii;
 
@@ -28,8 +28,8 @@ class Scheduler extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['postdate', 'enddate', 'sendername'], 'required'],
             [['postdate', 'enddate'], 'safe'],
+            [['sendername'], 'required'],
             [['sendername'], 'string', 'max' => 20],
         ];
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace kouosl\Slider\frontend\controllers;
+namespace kouosl\Slider\controllers\frontend;
 
 use Yii;
 use frontend\models\Scheduler;

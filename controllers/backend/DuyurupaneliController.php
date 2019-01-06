@@ -1,6 +1,6 @@
 <?php
 
-namespace kouosl\Slider\frontend\controllers;
+namespace kouosl\Slider\controllers\backend;
 
 use Yii;
 use frontend\models\Duyurupaneli;

@@ -1,6 +1,6 @@
 <?php
 
-namespace kouosl\portal-Slider\models;
+namespace kouosl\Slider\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;

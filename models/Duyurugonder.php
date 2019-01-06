@@ -1,6 +1,6 @@
 <?php
 
-namespace kouosl\portal-Slider\models;
+namespace kouosl\Slider\models;
 
 use Yii;
 
@@ -30,11 +30,10 @@ class Duyurugonder extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['sendername', 'senderposition', 'senderemail', 'senderid', 'senderdate'], 'required'],
+            [['sendername', 'senderposition', 'senderemail', 'senderid'], 'required'],
             [['senderid'], 'integer'],
             [['senderdate'], 'safe'],
-            [['sendername'], 'string', 'max' => 20],
-            [['senderposition'], 'string', 'max' => 15],
+            [['sendername', 'senderposition'], 'string', 'max' => 20],
             [['senderemail'], 'string', 'max' => 128],
         ];
     }

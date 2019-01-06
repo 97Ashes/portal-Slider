@@ -1,6 +1,6 @@
 <?php
 
-namespace kouosl\Slider\frontend\controllers;
+namespace kouosl\Slider\controllers\frontend;
 
 use Yii;
 use frontend\models\Duyurugonder;
@@ -47,14 +47,13 @@ class DuyurugonderController extends Controller
     /**
      * Displays a single Duyurugonder model.
      * @param integer $id
-     * @param integer $senderid
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id, $senderid)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id, $senderid),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -68,7 +67,7 @@ class DuyurugonderController extends Controller
         $model = new Duyurugonder();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'senderid' => $model->senderid]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -80,16 +79,15 @@ class DuyurugonderController extends Controller
      * Updates an existing Duyurugonder model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
-     * @param integer $senderid
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id, $senderid)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($id, $senderid);
+        $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'senderid' => $model->senderid]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -101,13 +99,12 @@ class DuyurugonderController extends Controller
      * Deletes an existing Duyurugonder model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
-     * @param integer $senderid
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id, $senderid)
+    public function actionDelete($id)
     {
-        $this->findModel($id, $senderid)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -116,13 +113,12 @@ class DuyurugonderController extends Controller
      * Finds the Duyurugonder model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @param integer $senderid
      * @return Duyurugonder the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $senderid)
+    protected function findModel($id)
     {
-        if (($model = Duyurugonder::findOne(['id' => $id, 'senderid' => $senderid])) !== null) {
+        if (($model = Duyurugonder::findOne($id)) !== null) {
             return $model;
         }
 

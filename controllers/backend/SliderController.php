@@ -1,9 +1,9 @@
 <?php
 
-namespace kouosl\Slider\frontend\controllers;
+namespace kouosl\Slider\controllers\backend;
 
 use Yii;
-use \frontend\models\Slider;
+use frontend\models\Slider;
 use frontend\models\SliderSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
